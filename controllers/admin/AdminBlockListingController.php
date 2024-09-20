@@ -168,13 +168,13 @@ class AdminBlockListingController extends ModuleAdminController
         }
 
         if (strpos($picto, $this->module->img_path_perso) !== false) {
-            if ($picto) {
+            if ($picto != '') {
                 $picto = basename($picto);
             }
             $blockPsr->setIcon('');
             $blockPsr->setCustomIcon($picto);
         } else {
-            if ($picto) {
+            if ($picto != '') {
                 $parts = explode('/', $picto);
                 $parts = array_slice($parts , -3);
                 $picto = implode('/', $parts);
@@ -197,7 +197,7 @@ class AdminBlockListingController extends ModuleAdminController
 
             if (is_bool($validUpload) && $validUpload === false) {
                 // Remove Custom icon
-                if ($blockPsr->getCustomIcon()) {
+                if ($blockPsr->getCustomIcon() != '') {
                     $filePath = blockreassurance::$static_folder_file_upload . '/' . basename($blockPsr->getCustomIcon());
                     if (file_exists($filePath)) {
                         unlink($filePath);

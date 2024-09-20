@@ -138,9 +138,9 @@ class PsreassuranceRepository extends ServiceEntityRepository
             $item['is_svg'] = !empty($item['custom_icon'])
                 && in_array(\ImageManager::getMimeType(\blockreassurance::$static_folder_file_upload . $item['custom_icon']), $xmlMimes);
 
-            if ($item['custom_icon']) {
+            if ($item['custom_icon'] != '') {
                 $item['custom_icon'] = \blockreassurance::$static_img_path_perso . '/' . $item['custom_icon'];
-            } elseif ($item['icon']) {
+            } elseif ($item['icon'] != '') {
                 $item['icon'] = \blockreassurance::$static_img_path . $item['icon'];
             }
         }
